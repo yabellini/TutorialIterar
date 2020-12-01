@@ -1,0 +1,275 @@
+---
+title: "Primeros pasos para aprender a Iterar"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+tutorial:
+  version: 1.0
+---
+
+```{r setup, include=FALSE, message = FALSE, warning=FALSE}
+library(learnr)
+library(tidyverse)
+
+checker <- function(label, user_code, check_code, envir_result, evaluate_result, ...) {
+  list(message = check_code, correct = TRUE, location = "append")
+}
+tutorial_options(exercise.timelimit = 60, exercise.checker = checker)
+knitr::opts_chunk$set(error = TRUE, out.width = "100%")
+```
+
+## Iteración
+
+###  
+
+Aquí tienes un número. Puedes hacer muchas cosas con él, como esta:
+
+* Calcula el logaritmo del número. Luego hace click en _Submit Answer_ (_Enviar respuesta_ en Inglés).
+
+```{r number, exercise = TRUE}
+1
+```
+
+```{r number-solution}
+log(1)
+```
+
+```{r number-hint}
+"Podes calcular el logaritmo de un número con `log()`"
+```
+
+```{r number-check}
+"Buen trabajo. No te preocupes que pronto, las cosas se pondrán más difíciles."
+```
+
+###  
+
+Aquí hay muchos números. ¿Y si quieres hacer cosas con ellos? Adelante:
+
+* Calcula el logaritmo de cada uno. No busques una solución complicada o elegante.
+
+```{r numbers, exercise = TRUE}
+1
+2
+3
+4
+5
+```
+
+```{r numbers-solution}
+log(1)
+log(2)
+log(3)
+log(4)
+log(5)
+```
+
+```{r numbers-hint}
+"Puedes llamar la función `log()` en cada número."
+```
+
+```{r numbers-check}
+"¡Bien hecho! Recorriste todos los números, uno por uno, llamando a la función log().
+
+¿Pero no debería tu computadora hacer esta repetición por vos? Si no, ¿Para qué estás usando una computadora ;-)?"
+```
+
+### Vectorización
+
+Por lo general, no es necesario que te repitas cuando usas R. Casi todas las funciones en R están _vectorizadas_. Esto significa que si colocas tus valores en un vector y luego ejecutas una función en el vector, R aplicará la función iterativamente a cada uno de los valores.
+
+* Hacé clic en  _Submit Answer_ para probarlo. ¡Vale la pena verlo al menos una vez! 
+
+```{r vectors, exercise = TRUE}
+numbers <- c(1, 2, 3, 4, 5)
+log(numbers)
+```
+
+```{r vectors-hint}
+"Simplemente hacé clic en Enviar respuesta y mira qué sucede."
+```
+
+```{r vectors-check}
+"La vectorización en R funciona, pero hay algo más que tienes que saber. Hacé clic en Continue para averiguar qué es."
+```
+
+###  
+
+No todas las funciones en R están vectorizadas, y las que están vectorizadas a menudo solo funcionan con _vectores no recursivos_.
+
+¿Qué significa eso? Bueno, hay dos tipos de vectores en R:
+
+1. vectores no recursivos
+1. vectores recursivos
+
+Veamos cada uno.
+
+### Vectores no recursivos
+
+Los vectores no recursivos suelen ser lo que imaginamos cuando pensamos en un vector. Cada elemento de un vector no recursivo es un valor único y todos los valores de un vector no recursivo son del mismo tipo.
+
+Ejemplos de vectores no recursivos en R incluyen:
+
+* vectores de dobles (es decir, vectores numéricos)
+* vectores de enteros
+* vectores de caracteres
+* vectores lógicos
+* factores
+
+
+###  
+
+Como vimos con `log()`, casi todas las funciones en R están vectorizadas para trabajar con vectores no recursivos. Aquí, _"numbers"_ es un vector no recursivo.
+
+```{r echo = TRUE}
+numbers <- c(1, 2, 3, 4, 5)
+log(numbers)
+```
+
+¿Qué pasa con los vectores recursivos?
+
+### Vectores recursivos
+
+Un _vector recursivo_ es un vector cuyos elementos individuales pueden ser cualquier cosa, incluso otros vectores, incluso otros vectores recursivos. De ahí el nombre.
+
+Los vectores recursivos son tan especiales que R les da un nombre especial, _listas (list_, en inglés). Puedes pensar en las listas como el pegamento que mantiene unido a R. R usa listas para crear dataframes, entornos, objetos de modelo y muchos objetos más.
+
+###  
+
+Pero, ¿las funciones vectorizadas de R están preparadas para trabajar con listas?
+
+* Intenta ejecutar `log()` en la siguiente lista para averiguarlo. Haga clic en _Run Code_.
+
+```{r lists, exercise = TRUE}
+list1 <- list(1, 2, 3, 4, 5)
+
+log(list1)
+```
+
+```{r lists-hint}
+"solo haz clic en Run Code para ver que pasa."
+```
+
+###  
+
+Casi ninguna función en R está vectorizada para trabajar con listas. Y en este ejemplo se puede ver por qué: las listas pueden contener _diferentes tipos de objetos_. Por ejemplo, la siguiente lista contiene tanto un _número_ como un _vector de caracteres_.
+
+```{r}
+chars <- c("a", "b", "c")
+list2 <- list(1, chars)
+list2
+```
+
+¿Qué probabilidad hay de que una función R funcione tanto con `1` como con el vector`c("a", "b", "c")`? 
+
+La mayoría de las funciones R funcionan con un solo tipo de datos, por lo que sus autores se encargan de que manejen vectores no recursivos, pero no listas.
+
+### Vocabulario importante
+
+Los vectores recursivos tienen un nombre común: listas, pero los vectores no recursivos no. Las personas tienden a llamar a los vectores no recursivos _vectores_, pero eso no es del todo preciso ya que los vectores recursivos también son vectores.
+
+Para distinguir los vectores no recursivos de los recursivos, nos referirémos a los vectores recursivos como _listas_ y a los vectores no recursivos como _vectores simples_.
+
+Es importante tener en cuenta que las listas _son_ un tipo de vector. Entonces, si encuentras en el tutorial la referencia _vector_ en lugar de _simple vector_, nos estamos refieriendo tanto a listas como a vectores simples.
+
+Ahora bien, ¿cómo deberías trabajar con listas?
+
+### ¿Qué deberías hacer?
+
+No te preocupes, no es neceario hacer las repiticiones a manos para con las listas, aunque podrías hacerlo. ¿No? Veamos.
+
+Puedes extraer cada elemento de una lista con la sintaxis de corchetes `[[i]]`. Por ejemplo, `list2[[2]]` extrae el segundo elemento de `list2`:
+
+```{r}
+list2[[2]]
+```
+
+* Termina el siguiente código para tomar el registro de cada valor en `list1`. Luego haga clic en _Submit Answer_.
+
+```{r manual-setup}
+list1 <- list(1, 2, 3, 4, 5)
+```
+
+```{r manual, exercise = TRUE}
+list1[[1]]
+list1[[2]]
+list1[[3]]
+list1[[4]]
+list1[[5]]
+```
+
+```{r manual-hint-1}
+"Aplica` log() `a cada componente de la lista a continuación."
+```
+
+```{r manual-hint-2}
+"Aplique`log()`a cada componente de la lista a continuación."
+```
+
+```{r manual-solution}
+log(list1[[1]])
+log(list1[[2]])
+log(list1[[3]])
+log(list1[[4]])
+log(list1[[5]])
+```
+
+```{r manual-check}
+"¡Bien! Pero no lo suficientemente cómodo para usar en la práctica diaria. Aprendamos a decirle a tu computadora que repita las listas por nosotros."
+```
+
+## purrr
+
+###   
+
+Este tutorial te enseñará cómo resolver problemas de iteración con el paquete `purrr`. En particular, aprenderás a utilizar la familia de funciones _map_ y sus funciones derivadas, como
+
+* `map()`
+* `map_dbl()`
+* `map2()`
+* `pmap()` 
+* `invoke_map()` y otras más
+
+### Otros enfoques
+
+Hay otras formas de resolver problemas de iteración en R. Podrías usar:
+
+* bucles _for_
+* la familia de funciones _lapply_
+* funciones específicas como `rowwise()` y `transpose()`
+
+Entonces, ¿por qué aprender a usar el paquete `purrr`?
+
+### ¿Por qué purrr?
+
+Para que la discusión sea concreta, comencemos con un ejemplo. Así es como usarías `purrr` para tomar la media de cada elemento de una lista llamada `x`:
+
+```{r echo = TRUE, eval = FALSE}
+map(x, mean)
+```
+
+Y así es como lo harías con un bucle for:
+
+```{r echo = TRUE, eval = FALSE}
+y <- list()
+for (i in seq_along(x)) {
+  y[[i]] <- mean(x[[i]])
+}
+y
+```
+
+###  
+
+No necesitas saber qué hace el código anterior para ver algunos beneficios obvios:
+
+1. El código `purrr` es fácil de escribir. Es mucho más sucinto que los bucles for.
+
+1. El código `purrr` es fácil de _leer_. Una vez que conozcas el vocabulario, podrás comprender inmediatamente lo que hace "map (x, mean)".
+
+    Esto no es cierto con los bucles. Incluso si sabe lo que hace "for", aún necesita estudiar la configuración y las partes internas del bucle para determinar qué devolverá ese bucle.
+
+1. El código `purrr` es fácil de pasar a otras funciones, p. Ej. `x%>% map(mean)` o `mutate(df, avg_x = map(x, mean))`.
+
+1. El código `purrr` es fácil de usar. Dado que `purrr` implementa el ciclo for por nosotros, no necesitamos preocuparnos que el bucle tenga efectos secundarios que no deseamos, que se ejecute más lento de lo debido o consuma cantidades innecesarias de memoria.
