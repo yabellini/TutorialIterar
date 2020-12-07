@@ -257,14 +257,14 @@ map_dbl(list1, log)
 ```
 
 ```{r map_dbl-check}
-"Good job. Now your results come back as a numeric vector. This is useful. For example, you could pass the results directly to round() without using another call to map(): list1 %>% map_dbl(log) %>% round()."
+"Buen trabajo. Ahora sus resultados regresan como un vector numérico. Esto es útil. Por ejemplo, puede pasar los resultados directamente a round() sin usar otra llamada a map(): list1 %>% map_dbl(log) %>% round()."
 ```
 
-### Other types of output
+### Otro tipo de salidas
 
-But suppose our function does not return doubles. For example, `str_sub()` from the stringr package returns characters. Here, it will return the first character in each string.
+Pero supongamos que nuestra función no devuelve dobles. Por ejemplo, `str_sub()` del paquete `stringr` devuelve caracteres. Aquí, devolverá el primer carácter de cada cadena.
 
-* Will the code work? Click Run Code to find out.
+* ¿Funcionará el siguiente código? Hacé clic en _Run code_ para averiguarlo.
 
 ```{r map_dbl2, exercise = TRUE}
 library(stringr)
@@ -274,61 +274,59 @@ map_dbl(strings, str_sub, start = 1, end = 1)
 
 ###  
 
-The code didn't work because `str_sub()` returns a set of characters, but `map_dbl()` builds a double (numeric) vector. 
+El código no funcionó porque `str_sub()` devuelve un conjunto de caracteres, pero `map_dbl()` construye un vector doble (numérico).
 
-In R, each non-list vector has a type. You can only save doubles in a double vector. You'd save characters in a _character vector_. Are you out of luck?
-
+En R, cada vector que no es una lista tiene un _tipo_. Solo puedes guardar _dobles_ en un vector doble. Deberías guardar los caracteres en un _vector de caracteres_. ¿Nos quedamos sin suerte?
 
 ###  
 
-No. purrr provides eight versions of `map()`. Each returns its results in a different format. 
+No! `purrr` tiene ocho versiones de `map()`. Cada una retorna su resultado en diferente formato. 
 
-Function     | Output
+Función      | Salida
 ------------ | -------------
-`map()`      |  list
-`map_chr()`  |  character vector
-`map_dbl()`  |  double (numeric) vector
-`map_dfc()`  |  data frame (output column binded)
-`map_dfr()`  |  data frame (output row binded)
-`map_int()`  |  integer vector
-`map_lgl()`  |  logical vector
-`walk()`     |  returns the input invisibly (used to trigger side effects)
+`map()`      |  lista
+`map_chr()`  |  vector de characteres (character)
+`map_dbl()`  |  vector de dobles (double (numeric))
+`map_dfc()`  |  data frame (salida enlazada por columnas)
+`map_dfr()`  |  data frame (salida enlazada por filas)
+`map_int()`  |  vector de enteros (integer)
+`map_lgl()`  |  vector de valores lógicos (logical)
+`walk()`     |  devuelve la entrada de forma invisible (se utiliza para desencadenar otras tareas)
 
-The last function, `walk()`, is used for functions that do not return an output to the command line, like functions that plot graphs or save files.
-
+La última función, `walk()`, se usa para funciones que no devuelven una salida a la línea de comando, como funciones que trazan gráficos o guardan archivos.
 ###  
 
-The idea behind purrr is that you can choose the map function that returns the type of output that you need.
+La idea detrás de `purrr` es que puedes elegir la función de `map` que devuelve el tipo de salida que necesitas.
 
-* Replace `map_dbl()` in the code below . Choose the replacement that will make the code work. Then click Submit Answer. 
+* Reemplaza `map_dbl()` en el código siguiente con la función que permitirá que el código funcione. Luego hacé clic en _Submit Answer_.
 
 ```{r map_chr, exercise = TRUE}
-strings <- list("Mary", "John", "Jill")
+strings <- list("María", "Juan", "René")
 
 map_dbl(strings, str_sub, start = 1, end = 1)
 ```
 
 ```{r map_chr-hint}
-"str_sub() returns characters."
+"str_sub() retorna caracteres."
 ```
 
 ```{r map_chr-solution}
-strings <- list("Mary", "John", "Jill")
+strings <- list("María", "Juan", "René")
 
 map_chr(strings, str_sub, start = 1, end = 1)
 ```
 
 ```{r map_chr-check}
-"Great job. Now let's cement our knowledge of `map()` by using it to solve a data wrangling challenge."
+"Gran trabajo. Ahora reforcemos nuestro conocimiento de `map()` usándolo para resolver un desafío de datos."
 ```
 
-## Case Study
+## Caso de Estudio
 
 ###  
 
-`ldeaths` is a list that records monthly deaths in the UK from lung disease. The data spans the years 1974 to 1979, and is divided year.
+`ldeaths` es una lista que registra las muertes mensuales en el Reino Unido por enfermedades pulmonares. Los datos abarcan los años 1974 a 1979 y están divididos por año.
 
-* Check it out. Click Submit Answer to see the contents of `ldeaths`.
+* Echale un vistazo. Hacé clic en _Submit Answer_ para ver el contenido de `ldeaths`.
 
 ```{r ldeaths-1, exercise = TRUE}
 ldeaths
