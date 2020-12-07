@@ -467,10 +467,10 @@ as_tibble(named_vec)
 
 ###  
 
-Now that you know how `as_tibble()` works,
+Ahora que sabes cómo funciona `as_tibble()`,
 
-* Use `map()` to map `as_tibble()` over the vectors in `ldeaths`. Then click Submit Answer. (For now, use `map()` instead of `map_dfr()`, this will help you see what happens step-by-step as you wrangle the data.)
-* Inspect the results closely. What happens?
+* Usa `map()` para mapear `as_tibble()` sobre los vectores en `ldeaths`. Luego hacé clic en _Submit Answer_. (por ahora, usa `map()` en lugar de `map_dfr()`, esto te ayudará a ver lo que sucede paso a paso mientras trabajas con los datos).
+* Inspecciona los resultados de cerca. ¿Qué pasa?
 
 ```{r as_tibble-2, exercise = TRUE}
 
@@ -482,12 +482,12 @@ ldeaths %>%
 ```
 
 ```{r as_tibble-2-check}
-"Good job, you made each vector a tibble (i.e. a data frame)! But there is something funny happening here. Let's investigate."
+"Buen trabajo, hiciste de cada vector un tibble (es decir, un data frame). Pero aquí está sucediendo algo divertido. Investiguemos un poco más."
 ```
 
-### Row or column?
+### ¿Fila o columna? 
 
-`as_tibble()` turned each vector into a data frame with one _column_. If you want the data frame below, you'll need to turn each vector into a data frame with one _row_ (that way `map_dfr()` can stack the rows on top of one another).
+`as_tibble()` convirtió cada vector en un dataframe con una _columna_. Si quieres el dataframe a continuación, deberás convertir cada vector en un dataframe con una _fila_ (de esa manera `map_dfr()` puede apilar las filas una encima de la otra).
 
 ```{r echo = FALSE}
 ldeaths %>% 
@@ -495,9 +495,9 @@ ldeaths %>%
   map_dfr(as_tibble)
 ```
 
-If you try running `map_dfr()` on our current output, it will stack your columns on top of one another to make a data frame with one long column. Go ahead, try it.
+Si intenta ejecutar `map_dfr()` en nuestra salida actual, apilará sus columnas una encima de la otra para crear un dataframe con una columna larga. Adelante, pruébalo.
 
-* Click Submit Answer. 
+* Clic en _Submit Answer_. 
 
 ```{r fail, exercise = TRUE}
 ldeaths %>% 
@@ -510,10 +510,10 @@ ldeaths %>%
 ```
 
 ```{r fail-check}
-"That's not what you want."
+"Eso no es lo que quieres."
 ```
 
-### How can you fix this?
+### ¿Como podemos arreglar esto?
 
 Even though R displays simple vectors as if they were _row vectors_, R thinks of every vector as a _column vector_, even if that vector has names. So why display the vector as a row vector? To save screen space.
 
