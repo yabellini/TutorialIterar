@@ -438,18 +438,18 @@ Para el Paso 1, puedes usar una función de map para combinar tus vectores en un
 
 ###  
 
-1. `map_dfr()` agrega cada elemento al primero como _filas_ (exactamente lo que queremos hacer)
-2. `map_dfc()` agrega cada elemento al primero como _columnas_
+1. `map_dfr()` agrega cada elemento al primer data frame como _filas_ (exactamente lo que queremos hacer)
+2. `map_dfc()` agrega cada elemento al primer data frame como _columnas_
 
-But each function expects to iterate over a set of _data frames_ and `ldeaths` contains a set of vectors. To make `map_dfr()` work, you will need to pass it a function that turns the vectors in `ldeaths` into data frames for `map_dfr()` to combine.
+Pero cada función espera iterar sobre un conjunto de _data frames_ y `ldeaths` contiene un conjunto de vectores. Para hacer que `map_dfr()` funcione, necesitarás pasarle una función que convierta los vectores en `ldeaths` en data frames para que `map_dfr()` los combine.
 
 ### as_tibble()
 
-R has many functions that can turn a vector into a data frame: `data.frame()`, `as.data.frame()`, `data_frame()`, `as_data_frame()`, are some of them. 
+R tiene muchas funciones que pueden convertir un vector en un marco de datos, por jemplo: `data.frame()`, `as.data.frame()`, `data_frame()` y `as_data_frame()`.
 
-I prefer to use `as_tibble()`. `as_tibble()` converts the vector to a data frame _and_ adds the helpful tibble class to the data frame. As a result, the data frame prints nicely at the command line. 
+Prefiero usar `as_tibble()`. `as_tibble()` convierte el vector en un data frame _y_ agrega la clase _tibble_ a ese dataframe. Como resultado, cuando queremos ver el contenido del dataframe, este se imprime de una forma más ordenada e informativa en la consola.
 
-* Try it out. Use `as_tibble()` to convert the vector below into a data frame.
+* Probalo. Usá `as_tibble()` para convertir el siguiente vector en un dataframe.
 
 ```{r as_tibble, exercise = TRUE}
 named_vec <- c(uno = 1, dos = 2, tres = 3)
@@ -462,7 +462,7 @@ as_tibble(named_vec)
 ```
 
 ```{r as_tibble-check}
-"Good job. as_tibble() comes in the tibble package, as do as_data_frame() and data_frame(). Like purrr, the tibble package is a member of the tidyverse."
+"Buen trabajo. as_tibble() viene en el paquete tibble, al igual que las funciones as_data_frame() y data_frame(). Al igual que purrr, el paquete tibble es parte del tidyverse."
 ```
 
 ###  
