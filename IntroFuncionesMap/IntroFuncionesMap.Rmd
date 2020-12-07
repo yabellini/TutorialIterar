@@ -412,15 +412,15 @@ ldeaths %>%
 
 ### Suma por mes
 
-Let's sum across months to see if there is a seasonal effect. 
+Vamos a sumar entre los meses para ver si hay un efecto estacional.
 
-Mathematically, this is as simple as your previous computations. Programatically, it is a challenge: your data is not set up in a way that makes it easy to sum across months. You'll need a strategy.
+Matemáticamente, esto es tan simple como tus cálculos anteriores. Desde el punto de vista programático, es un desafío: tus datos no están configurados de una manera que facilite la suma de los meses. Necesitarás una estrategia.
 
 ###  
 
-If you've taken the Work with Data primer recently, you might have a strategy in mind:
+Una estrategia puede ser:
 
-1. If you can get your data to look like this:
+1. Hacer que sus datos se vean así:
 
 ```{r echo = FALSE}
 ldeaths %>% 
@@ -428,18 +428,18 @@ ldeaths %>%
   map_dfr(as_tibble)
 ```
 
-2. Then you can use dplyr's `summarise()` function to sum the columns.
+2. Entonces puede usar la función `summary()` de _dplyr_ para sumar las columnas.
 
-Do just that, but fair warning: you're going to bump into a couple of surprises---just like when you wrangle data in real life.
+Hacé eso, pero te adverierto: te encontrarás con un par de sorpresas, como cuando trabajas con datos en la vida real.
 
-### Step 1 - A data frame
+### Paso 1 - Un data frame
 
-For Step 1, you can use a map function to combine your vectors into a data frame. Do you recall which map functions return a single data frame? There were two of them.
+Para el Paso 1, puedes usar una función de map para combinar tus vectores en un data frame. ¿Recuerdas qué funciones de map devuelven un sólo data frame? Había dos funciones.
 
 ###  
 
-1. `map_dfr()` adds each element to the first as _rows_ (exactly what you want)
-2. `map_dfc()` adds each element to the first as _columns_
+1. `map_dfr()` agrega cada elemento al primero como _filas_ (exactamente lo que queremos hacer)
+2. `map_dfc()` agrega cada elemento al primero como _columnas_
 
 But each function expects to iterate over a set of _data frames_ and `ldeaths` contains a set of vectors. To make `map_dfr()` work, you will need to pass it a function that turns the vectors in `ldeaths` into data frames for `map_dfr()` to combine.
 
