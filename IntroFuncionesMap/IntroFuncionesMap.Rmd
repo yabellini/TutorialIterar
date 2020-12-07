@@ -70,7 +70,7 @@ map(negativos, abs)
 
 ###  
 
-Think of `map()` like this. Each circle of squares represents a vector, and each square represents an element of the vector:
+Piensa en `map()` de esta manera: cada recuadro de cuadraditos representa un vector y cada cuadradito representa un elemento del vector:
 
 ```{r echo=FALSE, out.width = "70%"}
 knitr::include_graphics("images/map.png")
@@ -82,7 +82,7 @@ knitr::include_graphics("images/map.png")
 list1 <- list(1, 2, 3, 4, 5)
 ```
 
-* Use the code chunk below to map `log()` over the elements of `list1`. Then click Submit Answer.
+* Utiliza el fragmento de código a continuación para _mapear_ `log()` sobre los elementos de `list1`. Luego hacé clic en _Submit Answer_.
 
 ```{r map1, exercise = TRUE, exercise.eval = TRUE}
 
@@ -97,32 +97,32 @@ map(list1, log)
 ```
 
 ```{r map1-hint-1}
-"Begin with map()."
+"Empieza con map()."
 ```
 
 ```{r map1-hint-2}
-"Make list1 the first argument of map()."
+"Poné a list1 como el primer argumento de map()."
 ```
 
 ```{r map1-hint-3}
-"Make log the second argument of map()."
+"Poné log como el segundo argumento de map()."
 ```
 
 ```{r map1-hint-4}
-"Do not put parentheses behind log. log returns the code stored in the log function. log() executes the code and returns the results, which would then be passed to map() (if log() didn't throw an error that is; log() needs an argument to execute the code successfully.)"
+"No ponga paréntesis detrás de log. log devuelve el código almacenado en la función de logaritmo. log() ejecuta el código y devuelve los resultados, que luego se pasarían a map() (en caso que log() no arrojó un error, es decir, en el caso que log() necesita un argumento para ejecutar el código correctamente)."
 ```
 
 ```{r map1-check}
-"Excellent. You can use map() with any function to iterate over the elements of a vector. map() will return the results in a list, which means that map() can handle whatever output your function creates. Why? Because you can put anything in a list."
+"Excelente. Puedes usar map() con cualquier función para iterar sobre los elementos de un vector. map() devolverá los resultados en una lista, lo que significa que map() puede manejar cualquier salida que cree su función. ¿Por qué? Porque puedes poner cualquier cosa en una lista."
 ```
 
-### Functional programming
+### Programación funcional
 
-It may seem weird to you that `map()` takes a function as an argument, but it is not weird at all. In R, functions are objects that can be passed around just like everything else.
+Puede parecerte extraño que `map()` tome una función como argumento, pero no es extraño en absoluto. En R, las funciones son objetos que se pueden pasar como todos los demás.
 
-These questions will help you get a feel for it.
+Estas preguntas te ayudarán a familiarizarte con esta idea.
 
-* Use this code block as a scratch pad to help you answer the questions below.
+* Usa este bloque de código como un bloc de notas para ayudarte a responder las preguntas que aparecen a continuación.
 
 ```{r map3, exercise = TRUE}
 
@@ -130,39 +130,39 @@ These questions will help you get a feel for it.
 
 ```{r q1, echo=FALSE}
 quiz(caption = "",
-     question("What does `log` return?",
+     question("qué devuelve `log`?",
               answer("0"),
-              answer("An error"),
-              answer("The function saved in the object named `log`", correct = TRUE, message = "log is just an object that happens to contain a function. This is true for the names of all R functions. You can return the function without running it by calling the name of the function without parentheses behind it."),
+              answer("Un error"),
+              answer("La función guardada en el objeto llamado `log`", correct = TRUE, message = "log es solo un objeto que contiene una función. Esto es cierto para los nombres de todas las funciones R. Puedes devolver la función sin ejecutarla llamando al nombre de la función sin paréntesis detrás."),
               allow_retry = TRUE
      ),
-     question("What does `log()` return?",
+     question("Qué retorna `log()`?",
               answer("0"),
-              answer("An error", correct = TRUE, message = 'Parentheses are the "go button" for R functions. When you place parentheses behind the name of an object that contains a function, R executes the function. Unfortunately, the log function requires an argument to do its job. We do not supply one here, so we get an error. To see the effect of parentheses more clearly, compare Sys.Date() to Sys.Date. The Sys.Date function does not require an argument.'),
-              answer("The function saved in the object named `log`"),
+              answer("Un error", correct = TRUE, message = 'Los paréntesis son el "botón play" para las funciones R. Cuando colocas los paréntesis detrás del nombre de un objeto que contiene una función, R ejecuta la función. Desafortunadamente, la función log requiere un argumento para hacer su trabajo. No proporcionamos uno aquí, por lo que obtenemos un error. Para ver el efecto de los paréntesis con mayor claridad, compare Sys.Date() con Sys.Date. La función Sys.Date no requiere un argumento.'),
+              answer("La función guardada en el objeto llamado `log`"),
               allow_retry = TRUE
      ),
-     question("What does `log(1)` return?",
-              answer("0", correct = TRUE, message = "This is the result of running log on 1. The parentheses execute the function saved in log and pass the function the argument 1, which we supplied between the parentheses."),
-              answer("An error"),
-              answer("The function saved in the object named `log`"),
+     question("qué devuelve `log(1)`?",
+              answer("0", correct = TRUE, message = "Este es el resultado de ejecutar log en 1. Los paréntesis ejecutan la función guardada en log y pasan a la función el argumento 1, que proporcionamos entre paréntesis."),
+              answer("Un error"),
+              answer("La función guardada en el objeto llamado `log`"),
               allow_retry = TRUE
      )
 )
 ```
 
-By the way, you will need to click Run Code above at least once before you can continue.
+Por cierto, deberás hacer clic en _Run Code_ arriba al menos una vez antes de poder continuar.
 
-### What about the output?
+### ¿Qué pasa con la salida?
 
-You give `map()` a vector and a function. `map()` always gives you a list. The _nth_ element of the list will be the result of applying your function to the _nth_ element of your vector. 
+Le das a `map()` un vector y una función. `map()` siempre te retorna una lista. El elemento _enécimo_ de la lista será el resultado de aplicar su función al elemento _enécimo_ de su vector.
 
-This is convenient for two reasons:
+Esto es conveniente por dos razones:
 
-1. `map()` can handle anything that comes out of your function, even a data frame. Why? Because you can put anything into a list.
-2. `map()` is easy to use in pipes because it takes a vector as its first argument and returns a vector (a list is a type of vector). Here's an example.
+1. `map()` puede manejar cualquier cosa que salga de tu función, incluso un dataframe. ¿Por qué? Porque puedes poner cualquier cosa en una lista.
+2. `map()` es fácil de usar con _pipes_ porque toma un vector como primer argumento y devuelve un vector (una lista es un tipo de vector). Veamos un ejemplo.
 
-* Predict what this code will return and then click Submit Answer.
+* Predice lo que devolverá este código y luego hacé clic en _Submit Answer_.
 
 ```{r map2, exercise = TRUE}
 list1 %>% 
@@ -175,20 +175,20 @@ list1 <- list(1, 2, 3, 4, 5)
 ```
 
 ```{r map2-hint}
-"Just click Submit Answer to see if your prediction is correct."
+"Hacé clic en Submit Answer para ver si tu predicción es correcta."
 ```
 
 ```{r map2-check}
-"The code first took the log of each element with log(). It then rounded each answer to the nearest integer with round()."
+"El código primero tomó el registro de cada elemento con log(). Luego redondeó cada respuesta al número entero más cercano con round()."
 ```
 
-## Inputs and Outputs
+## Entradas y Salidas
 
-### Arguments
+### Argumentos
 
-What if you want to pass `map()` a function that uses extra arguments? 
+¿Qué pasa si desea pasar `map()` una función que usa argumentos adicionales?
 
-For example, you would give `round()` an extra argument named `digits` if you wanted to round to a certain number of digits past the decimal place, e.g. 
+Por ejemplo, le darías a `round()` un argumento adicional llamado `digits` si quisieras redondear a un cierto número de dígitos después del lugar decimal, p. ej.
 
 ```{r}
 round(3.141593, digits = 2)
@@ -196,7 +196,7 @@ round(3.141593, digits = 2)
 
 ###  
 
-You can pass extra arguments for your function _to_ `map()` as if they were arguments _of_ `map()`. `map()` will forward the arguments to your function when it calls the function. You will almost always want to name these arguments, e.g.
+Puedes pasar argumentos adicionales para tu función _a_ `map()` como si fueran argumentos _de_ `map()`. `map()` enviará los argumentos a su función cuando llame a la función. Casi siempre querrá nombrar estos argumentos, p. Ej.
 
 ```{r map-args}
 list1 %>% 
@@ -206,9 +206,9 @@ list1 %>%
 
 ###  
 
-Can you do it? 
+¿Puedes hacerlo?
 
-* Use the little known `base` argument of `log()` to compute the base 2 log of each element in `list1`. Then click Submit Answer.
+* Utiliza el poco conocido argumento `base` de `log()` para calcular el logaritmo base 2 de cada elemento en `list1`. Luego hacé clic en _Submit Answer_.
 
 ```{r map4, exercise = TRUE}
 
@@ -223,26 +223,26 @@ map(list1, log, base = 2)
 ```
 
 ```{r map4-hint}
-"Begin with map(list1, log)."
+"Empieza con map(list1, log)."
 ```
 
 ```{r map4-check}
-"Good job. You can pass as many arguments as you like through map(), be sure to separate each with a comma, e.g. map(list1, rnorm, mean = 1, sd = 2)."
+"Buen trabajo. Puede pasar tantos argumentos como desee a través de map(), asegúrese de separar cada uno con una coma, ej. map(list1, rnorm, media = 1, sd = 2)."
 ```
 
-### Output formats
+### Formatos de salida
 
-So far all of our functions have returned a list of numbers. This is a bit silly, because (as you've seen) it can be hard to work with lists.
+Hasta ahora, todas nuestras funciones han devuelto una lista de números. Esto es no resulta muy útil, porque (como has visto) puede ser difícil trabajar con listas.
 
-What if you want to return the results as a simple vector (i.e. not a list)?
+¿Qué sucede si deseas devolver los resultados como un vector simple (es decir, no como una lista)?
 
 ### map_dbl()
 
-You could do that with `map_dbl()`. 
+Puedes hacer eso con `map_dbl()`. 
 
-`map_dbl()` works exactly like `map()`, except it returns its results in a numeric vector. (dbl is short for "double", the computer name for a number that can contain a decimal).
+`map_dbl()` trabaja igual que `map()`, excepto que devuelve sus resultados en un vector numérico. (dbl es la abreviatura de "double", el nombre que se le da en computación a un número que puede contener un decimal).
 
-* Change the code below to use `map_dbl()` then click Submit Answer.
+* Cambia el siguiente código para que use `map_dbl()` luego hacé click en _Submit Answer_.
 
 ```{r map_dbl, exercise = TRUE}
 map(list1, log)
