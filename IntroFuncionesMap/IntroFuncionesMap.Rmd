@@ -333,21 +333,21 @@ ldeaths
 ```
 
 ```{r ldeaths-1-check}
-"This is the data you will explore. ldeaths is a reformatted version of the ldeaths time series that comes in base R."
+"Estos son los datos que explorarás. ldeaths es una versión reformateada de la serie temporal de ldeaths que viene en R base."
 ```
 
-### Deaths by year
+### Muertes por año
 
-It would be helpful to know how many people died each year from lung disease. Then you could see if deaths decreased over time. Can you find out?
+Sería útil saber cuántas personas mueren cada año por enfermedades pulmonares. Entonces podrías ver si las muertes disminuyeron con el tiempo. ¿Puedes hacerlo?
 
-* Use a map function to compute the sum of each vector in `ldeaths`. Then click Submit Answer.
+* Utiliza una función de map para calcular la suma de cada vector en "ldeaths". Luego hacé clic en _Submit Answer_.
 
 ```{r ldeaths-sum, exercise = TRUE}
 
 ```
 
 ```{r ldeaths-sum-hint}
-"The sums will be numbers (doubles)."
+"Los resultados de la suma debe ser un número (doubles)."
 ```
 
 ```{r ldeaths-sum-solution}
@@ -355,25 +355,25 @@ map_dbl(ldeaths, sum)
 ```
 
 ```{r ldeaths-sum-check}
-"Good job. It looks like deaths went down over time (slightly). Did you use map() or map_dbl()? Both will work, but map_dbl() will return your results in a format that is easier to inspect and use."
+"Buen trabajo. Parece que las muertes disminuyeron con el tiempo (levemente). ¿Usaste map() o map_dbl()? Ambos funcionarán, pero map_dbl() devolverá sus resultados en un formato que es más fácil de inspeccionar y usar."
 ```
 
-### Total deaths
+### Muertes totales
 
-Take it a step further.
+Da un paso más.
 
-* Compute the _total_ number of deaths in the data set. This will be the sum of your last result. Then click Submit Answer.
+* Calcula el número _total_ de muertes en el conjunto de datos. Esta será la suma de su último resultado. Luego haga clic en _Submit Answer_.
 
 ```{r ldeaths-total, exercise = TRUE}
 
 ```
 
 ```{r ldeaths-total-hint-1}
-"This will take two steps."
+"Esto va a tomar dos pasos."
 ```
 
 ```{r ldeaths-total-hint-2}
-"The second step will be easier if you use map_dbl() in your first step."
+"El segundo paso será más fácil si usa map_dbl() en su primer paso."
 ```
 
 ```{r ldeaths-total-solution}
@@ -381,23 +381,23 @@ sum(map_dbl(ldeaths, sum))
 ```
 
 ```{r ldeaths-total-check}
-"Good work. First, you summed each vector. Then, you summed the results. It is easiest to sum the results if you use map_dbl() to sum the vectors."
+"Buen trabajo. Primero, sumaste cada vector. Luego, sumaste los resultados. Es más fácil sumar los resultados si usa map_dbl() para sumar los vectores."
 ```
 
 ### Pipes
 
-Now that you are doing multi-step operations, you should begin using the pipe operator if you aren't already. The pipe operator (`%>%`) is great for single step operations too.
+Ahora que estás realizando operaciones de varios pasos, debes comenzar a usar el operador _pipe_ si aún no lo has hecho. El operador _pipe_ (`%>%`) también es ideal para operaciones de un solo paso.
 
-* Take a moment to convert this code to use the pipe operator. Then click Submit Answer.
+* Tómate un momento para convertir este código usando el operador _pipe_. Luego hacé clic en _Submit Answer_.
 
-    Note: Recall that the pipe operator takes the output of whatever is on its left hand side and passes it to the first argument of the function that is on its right hand side. So `x %>% f()` is the same as `f(x)` and `x %>% f() %>% g()` is the same as `g(f(x))`.
+    Nota: Recuerda que el pipe toma la salida de lo que esté en el lado izquierdo y lo pasa al primer argumento de la función que está en el lado derecho. Entonces, `x %>% f()` es lo mismo que `f(x)` y `x %>% f()%>% g()` es lo mismo que `g(f(x))`.
 
 ```{r ldeaths-pipe, exercise = TRUE}
 sum(map_dbl(ldeaths, sum))
 ```
 
 ```{r ldeaths-pipe-hint}
-"You will need to use two pipe operators to convert this expression into a pipe."
+"Deberás utilizar dos pipes para convertir esta expresión."
 ```
 
 ```{r ldeaths-pipe-solution}
@@ -407,10 +407,10 @@ ldeaths %>%
 ```
 
 ```{r ldeaths-pipe-check}
-"Use pipes for the rest of this case study. Pipes make it easy to build on previous work and to transform your data one step at a time. I can't recommend pipes enough."
+"Utiliza pipes para el resto de este caso de estudio. con los pipes es más fácil construir sobre códigos anteriores y en la transformación de tus datos un paso a la vez. No puedo recomendar los pipes lo suficiente."
 ```
 
-### Sum by month
+### Suma por mes
 
 Let's sum across months to see if there is a seasonal effect. 
 
