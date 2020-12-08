@@ -569,7 +569,7 @@ ldeaths %>%
 
 ###  
 
-Esta es una forma infalible de hacerlo, pero requiere escribir mucho; Estoy resumiendo cada columna del marco de datos. En su lugar, usemos un atajo.
+Esta es una forma infalible de hacerlo, pero requiere escribir mucho; Estoy resumiendo cada columna del data frame. En su lugar, usemos un atajo.
 
 ```{r eval = FALSE}
 ldeaths %>% 
@@ -591,9 +591,9 @@ ldeaths %>%
 
 ### summarise_all()
 
-dplyr contains a variant of `summarise()` named `summarise_all()`. To use `summarise_all()` give it a data frame and then one or more functions to apply to each column in the data frame. `summarise_all()` will apply each function to every column and return the results as a summary table.
+dplyr contiene una variante de `summary()` denominada `summary_all()`. Para usar `summary_all()`, hay que pasarle un data frame y luego una o más funciones para aplicar a cada columna en ese dataframe. `summary_all()` aplicará cada función a cada columna y devolverá los resultados como una tabla de resumen.
 
-* Use `summarise_all()` and the code below to sum across months. Look at the hints if you get stuck. Then click Submit Answer.
+* Usa `summarise_all()` y el código siguiente para sumar meses. Mira las sugerencias (hints) si te quedas trabado/a. Luego hacé clic en _Submit Answer_.
 
 ```{r all, exercise = TRUE}
 ldeaths %>% 
@@ -602,7 +602,7 @@ ldeaths %>%
 ```
 
 ```{r all-hint}
-"You do not need to pass summarise_all() a data frame; it will inherit one from the pipe."
+"No es necesario pasarle un data frame a summarise_all(); recibirá uno desde el pipe."
 ```
 
 ```{r all-solution}
@@ -613,11 +613,6 @@ ldeaths %>%
 ```
 
 ```{r all-check}
-"Great Job! You can see a strong seasonal effect in the data: more lung related deaths happen in winter. You were able to do this because of the work you put into wrangling the data with purrr. Give yourself a pat on the back!"
+"¡Gran trabajo! Puedes ver un fuerte efecto estacional en los datos: en invierno ocurren más muertes relacionadas con los pulmones. Pudiste hacer esto debido al trabajo que dedicaste a trabajar los datos con purrr. ¡Date una palmadita en la espalda!"
 ```
 
-### The End
-
-Congratulations on making it to the end. You've learned the ins and outs of iterating with `map()`, but there is more to know.
-
-When you are ready, the next tutorial will show you how to save a lot of time with `map()`'s syntax shortcuts. It will also show you what to do when you cannot find a function to map that does what you want.
