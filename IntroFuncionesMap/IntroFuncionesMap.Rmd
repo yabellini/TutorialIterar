@@ -515,17 +515,17 @@ ldeaths %>%
 
 ### ¿Como podemos arreglar esto?
 
-Even though R displays simple vectors as if they were _row vectors_, R thinks of every vector as a _column vector_, even if that vector has names. So why display the vector as a row vector? To save screen space.
+Aunque R muestra vectores simples como si fueran _vectores de fila_, R piensa en cada vector como un _vector de columna_, incluso si ese vector tiene nombres. Entonces, ¿por qué mostrar el vector como un vector de fila? Para ahorrar espacio en la pantalla.
 
 ```{r}
 ldeaths[[1]]
 ```
 
-You can get the data frames you want if you first transpose the column vectors in `ldeaths` to row vectors. 
+Puede obtener los data frames que quieras si primero transpone los vectores de columna en `ldeaths` a vectores de fila. 
 
 ### t()
 
-R's `t()` function does just that. 
+La función de R `t()` hace exactante eso.
 
 ```{r}
 ldeaths[[1]]
@@ -533,15 +533,15 @@ ldeaths[[1]]
 t(ldeaths[[1]])
 ```
 
-Don't be fooled by the way R displays the vectors. R only thinks of the second vector as a row vector. You can tell by the bracket notation in front of the vector. It indicates that this is the first _row_ of the result (but you can ignore the notation if it doesn't interest you).
+No te dejes engañar por la forma en que R muestra los vectores. R solo piensa en el segundo vector como un vector de fila. Puedes saberlo por la notación entre corchetes delante del vector. Indica que esta es la primera _fila_ del resultado (pero puedes ignorar la notación si no te interesa).
 
-### A data set
+### Un data set
 
-Now you can finish Step 1.
+Ahora puedes finalizar el paso 1.
 
-1. Use `map()` to apply `t()` to each vector in `ldeaths`.
-2. Use `map_dfr()` to map `as_tibble()` over the transposed results. `map_dfr()` will combine the output into a single data frame. 
-3. Click Submit Answer
+1. Utiliza `map()` para aplicar `t()` a cada vector en `ldeaths`.
+2. Utiliza `map_dfr()` para mapear `as_tibble()` sobre los resultados transpuestos. `map_dfr()` combinará la salida en un solo data frame.
+3. Haga clic en _Submit Answer_.
 
 ```{r t, exercise = TRUE}
 
@@ -554,14 +554,12 @@ ldeaths %>%
 ```
 
 ```{r t-check}
-"Excellent. Now you can finish."
+"Excelente. Ahora ya puedes terminar."
 ```
 
-### Step 2 - summarise()
+### Paso 2 - summarise()
 
-How would you extend this code with `summarise()` from the dplyr package to compute the monthly totals?
-
-_(You may need to take the Work with Data Primer to understand these final three sections.)_
+¿Cómo ampliarías este código con `summary()` del paquete dplyr para calcular los totales mensuales?
 
 ```{r}
 ldeaths %>% 
@@ -571,7 +569,7 @@ ldeaths %>%
 
 ###  
 
-Here's a surefire way to do it, but it requires a lot of typing; I'm summarising every column in the data frame. Let's use a shortcut instead.
+Esta es una forma infalible de hacerlo, pero requiere escribir mucho; Estoy resumiendo cada columna del marco de datos. En su lugar, usemos un atajo.
 
 ```{r eval = FALSE}
 ldeaths %>% 
