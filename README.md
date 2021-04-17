@@ -7,29 +7,42 @@
 
 <!-- badges: end -->
 
-The goal of TutorialIterar is to …
+El objetivo de este paquete contiene dos tutoriales para introducir el
+concepto de iteración en R.
 
-## Installation
+La iteración es la tarea de aplicar una función de forma iterativa a
+cada elemento de un vector. El primer tutorial explicará qué es un
+vector e introducirá dos formas de iterar en R: bucles *for* y el
+paquete *purrr*.
 
-You can install the released version of TutorialIterar from
-[CRAN](https://CRAN.R-project.org) with:
+El segundo tutorial introduce la familia de funciones *map* de *purrr*
+que hace que la iteración sea rápida y fácil. Aprenderás los secretos de
+*map()* y sus variantes.
+
+## Instalación
+
+Para instalar la versión de desarrollo desde GitHub, usá:
 
 ``` r
-install.packages("TutorialIterar")
+# install.packages("remotes")
+remotes::install_github("yabellini/TutorialIterar")
 ```
 
-And the development version from [GitHub](https://github.com/) with:
+Si no tenes la ultima versión entonces tenés que instalar el paquete
+learnr y luego ejecutar de esta manera el Tutorial:
+
+  - Tutorial *Primeros pasos* para iterar con R:
+
+<!-- end list -->
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("yabellini/TutorialIterar")
+learnr::run_tutorial("PrimerosPasos", package = "TutorialIterar")
 ```
 
-## Example
+  - Tutorial *Introducción a las funciones Map* :
 
-This is a basic example which shows you how to solve a common problem:
+<!-- end list -->
 
 ``` r
-library(TutorialIterar)
-## basic example code
+learnr::run_tutorial("IntroFuncionesMap", package = "TutorialIterar")
 ```
