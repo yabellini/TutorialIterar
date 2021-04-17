@@ -2,12 +2,15 @@
 title: "Primeros pasos para aprender a Iterar"
 output: 
   learnr::tutorial:
+    language: es
     progressive: true
     allow_skip: true
 runtime: shiny_prerendered
 tutorial:
   version: 1.0
+description: "Primeros pasos para aprender a iterar en R"
 ---
+
 
 ```{r setup, include=FALSE, message = FALSE, warning=FALSE}
 library(learnr)
@@ -26,7 +29,7 @@ knitr::opts_chunk$set(error = TRUE, out.width = "100%")
 
 Aquí tienes un número. Puedes hacer muchas cosas con él, como esta:
 
-* Calcula el logaritmo del número. Luego hace click en _Submit Answer_ (_Enviar respuesta_ en Inglés).
+* Calcula el logaritmo del número. Luego hace click en _Enviar respuesta_.
 
 ```{r number, exercise = TRUE}
 1
@@ -80,7 +83,7 @@ log(5)
 
 Por lo general, no es necesario que te repitas cuando usas R. Casi todas las funciones en R están _vectorizadas_. Esto significa que si colocas tus valores en un vector y luego ejecutas una función en el vector, R aplicará la función iterativamente a cada uno de los valores.
 
-* Hacé clic en  _Submit Answer_ para probarlo. ¡Vale la pena verlo al menos una vez! 
+* Hacé clic en _Envir respuesta_ para probarlo. ¡Vale la pena verlo al menos una vez! 
 
 ```{r vectors, exercise = TRUE}
 numbers <- c(1, 2, 3, 4, 5)
@@ -92,7 +95,7 @@ log(numbers)
 ```
 
 ```{r vectors-check}
-"La vectorización en R funciona, pero hay algo más que tienes que saber. Hacé clic en Continue para averiguar qué es."
+"La vectorización en R funciona, pero hay algo más que tienes que saber. Hacé clic en Continuar para averiguar qué es."
 ```
 
 ###  
@@ -140,7 +143,7 @@ Los vectores recursivos son tan especiales que R les da un nombre especial, _lis
 
 Pero, ¿las funciones vectorizadas de R están preparadas para trabajar con listas?
 
-* Intenta ejecutar `log()` en la siguiente lista para averiguarlo. Haga clic en _Run Code_.
+* Intenta ejecutar `log()` en la siguiente lista para averiguarlo. Haga clic en _Ejecutar código_.
 
 ```{r lists, exercise = TRUE}
 list1 <- list(1, 2, 3, 4, 5)
@@ -149,7 +152,7 @@ log(list1)
 ```
 
 ```{r lists-hint}
-"solo haz clic en Run Code para ver que pasa."
+"Haz clic en Ejecutar código para ver que pasa."
 ```
 
 ###  
@@ -186,7 +189,7 @@ Puedes extraer cada elemento de una lista con la sintaxis de corchetes `[[i]]`. 
 list2[[2]]
 ```
 
-* Termina el siguiente código para tomar el registro de cada valor en `list1`. Luego haga clic en _Submit Answer_.
+* Termina el siguiente código para tomar el registro de cada valor en `list1`. Luego haga clic en _Enviar respuesta_.
 
 ```{r manual-setup}
 list1 <- list(1, 2, 3, 4, 5)
@@ -273,3 +276,9 @@ No necesitas saber qué hace el código anterior para ver algunos beneficios obv
 1. El código `purrr` es fácil de pasar a otras funciones, p. Ej. `x%>% map(mean)` o `mutate(df, avg_x = map(x, mean))`.
 
 1. El código `purrr` es fácil de usar. Dado que `purrr` implementa el ciclo for por nosotros, no necesitamos preocuparnos que el bucle tenga efectos secundarios que no deseamos, que se ejecute más lento de lo debido o consuma cantidades innecesarias de memoria.
+
+### Fuente
+
+* R para ciencia de Datos. [Capítulo Iteración](https://es.r4ds.hadley.nz/iteraci%C3%B3n.html)
+
+* [RStudio primer Iterate](https://rstudio.cloud/learn/primers/5)

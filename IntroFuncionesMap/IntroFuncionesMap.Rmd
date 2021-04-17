@@ -2,11 +2,13 @@
 title: "Funciones Map"
 output: 
   learnr::tutorial:
+    language: es
     progressive: true
     allow_skip: false
 runtime: shiny_prerendered
 tutorial:
   version: 1.0
+  description: "Funciones Map"
 ---
 
 ```{r setup, include=FALSE, message = FALSE, warning=FALSE}
@@ -39,7 +41,7 @@ Las funciones `map()` están en el paquete `purrr`. `purrr` es un paquete con he
 
 `purrr` se carga cuando ejecutas `library(tidyverse)`
 
-* Escribe el código para cargar `purrr` (ya está instalado) y luego haz click en _Submit Answer_.
+* Escribe el código para cargar `purrr` (ya está instalado) y luego haz click en _Enviar respuesta_.
 
 ```{r purrr, exercise = TRUE}
 
@@ -82,7 +84,7 @@ knitr::include_graphics("images/map.png")
 list1 <- list(1, 2, 3, 4, 5)
 ```
 
-* Utiliza el fragmento de código a continuación para _mapear_ `log()` sobre los elementos de `list1`. Luego hacé clic en _Submit Answer_.
+* Utiliza el fragmento de código a continuación para _mapear_ `log()` sobre los elementos de `list1`. Luego hacé clic en _Enviar respuesta_.
 
 ```{r map1, exercise = TRUE, exercise.eval = TRUE}
 
@@ -151,7 +153,7 @@ quiz(caption = "",
 )
 ```
 
-Por cierto, deberás hacer clic en _Run Code_ arriba al menos una vez antes de poder continuar.
+Por cierto, deberás hacer clic en _Ejecutar código_ arriba al menos una vez antes de poder continuar.
 
 ### ¿Qué pasa con la salida?
 
@@ -162,7 +164,7 @@ Esto es conveniente por dos razones:
 1. `map()` puede manejar cualquier cosa que salga de tu función, incluso un dataframe. ¿Por qué? Porque puedes poner cualquier cosa en una lista.
 2. `map()` es fácil de usar con _pipes_ porque toma un vector como primer argumento y devuelve un vector (una lista es un tipo de vector). Veamos un ejemplo.
 
-* Predice lo que devolverá este código y luego hacé clic en _Submit Answer_.
+* Predice lo que devolverá este código y luego hacé clic en _Enviar respuesta_.
 
 ```{r map2, exercise = TRUE}
 list1 %>% 
@@ -175,7 +177,7 @@ list1 <- list(1, 2, 3, 4, 5)
 ```
 
 ```{r map2-hint}
-"Hacé clic en Submit Answer para ver si tu predicción es correcta."
+"Hacé clic en Enviar respuesta para ver si tu predicción es correcta."
 ```
 
 ```{r map2-check}
@@ -208,7 +210,7 @@ list1 %>%
 
 ¿Puedes hacerlo?
 
-* Utiliza el poco conocido argumento `base` de `log()` para calcular el logaritmo base 2 de cada elemento en `list1`. Luego hacé clic en _Submit Answer_.
+* Utiliza el poco conocido argumento `base` de `log()` para calcular el logaritmo base 2 de cada elemento en `list1`. Luego hacé clic en _Enviar respuesta_.
 
 ```{r map4, exercise = TRUE}
 
@@ -242,7 +244,7 @@ Puedes hacer eso con `map_dbl()`.
 
 `map_dbl()` trabaja igual que `map()`, excepto que devuelve sus resultados en un vector numérico. (dbl es la abreviatura de "double", el nombre que se le da en computación a un número que puede contener un decimal).
 
-* Cambia el siguiente código para que use `map_dbl()` luego hacé click en _Submit Answer_.
+* Cambia el siguiente código para que use `map_dbl()` luego hacé click en _Enviar respuesta_.
 
 ```{r map_dbl, exercise = TRUE}
 map(list1, log)
@@ -264,7 +266,7 @@ map_dbl(list1, log)
 
 Pero supongamos que nuestra función no devuelve dobles. Por ejemplo, `str_sub()` del paquete `stringr` devuelve caracteres. Aquí, devolverá el primer carácter de cada cadena.
 
-* ¿Funcionará el siguiente código? Hacé clic en _Run code_ para averiguarlo.
+* ¿Funcionará el siguiente código? Hacé clic en _Ejecutar código_ para averiguarlo.
 
 ```{r map_dbl2, exercise = TRUE}
 library(stringr)
@@ -298,7 +300,7 @@ La última función, `walk()`, se usa para funciones que no devuelven una salida
 
 La idea detrás de `purrr` es que puedes elegir la función de `map` que devuelve el tipo de salida que necesitas.
 
-* Reemplaza `map_dbl()` en el código siguiente con la función que permitirá que el código funcione. Luego hacé clic en _Submit Answer_.
+* Reemplaza `map_dbl()` en el código siguiente con la función que permitirá que el código funcione. Luego hacé clic en _Enviar respuesta_.
 
 ```{r map_chr, exercise = TRUE}
 strings <- list("María", "Juan", "René")
@@ -326,7 +328,7 @@ map_chr(strings, str_sub, start = 1, end = 1)
 
 `ldeaths` es una lista que registra las muertes mensuales en el Reino Unido por enfermedades pulmonares. Los datos abarcan los años 1974 a 1979 y están divididos por año.
 
-* Echale un vistazo. Hacé clic en _Submit Answer_ para ver el contenido de `ldeaths`.
+* Echale un vistazo. Hacé clic en _Enviar respuesta_ para ver el contenido de `ldeaths`.
 
 ```{r ldeaths-1, exercise = TRUE}
 ldeaths
@@ -340,7 +342,7 @@ ldeaths
 
 Sería útil saber cuántas personas mueren cada año por enfermedades pulmonares. Entonces podrías ver si las muertes disminuyeron con el tiempo. ¿Puedes hacerlo?
 
-* Utiliza una función de map para calcular la suma de cada vector en "ldeaths". Luego hacé clic en _Submit Answer_.
+* Utiliza una función de map para calcular la suma de cada vector en "ldeaths". Luego hacé clic en _Enviar respuesta_.
 
 ```{r ldeaths-sum, exercise = TRUE}
 
@@ -362,7 +364,7 @@ map_dbl(ldeaths, sum)
 
 Da un paso más.
 
-* Calcula el número _total_ de muertes en el conjunto de datos. Esta será la suma de su último resultado. Luego haga clic en _Submit Answer_.
+* Calcula el número _total_ de muertes en el conjunto de datos. Esta será la suma de su último resultado. Luego haga clic en _Enviar respuesta_.
 
 ```{r ldeaths-total, exercise = TRUE}
 
@@ -388,7 +390,7 @@ sum(map_dbl(ldeaths, sum))
 
 Ahora que estás realizando operaciones de varios pasos, debes comenzar a usar el operador _pipe_ si aún no lo has hecho. El operador _pipe_ (`%>%`) también es ideal para operaciones de un solo paso.
 
-* Tómate un momento para convertir este código usando el operador _pipe_. Luego hacé clic en _Submit Answer_.
+* Tómate un momento para convertir este código usando el operador _pipe_. Luego hacé clic en _Enviar respuesta_.
 
     Nota: Recuerda que el pipe toma la salida de lo que esté en el lado izquierdo y lo pasa al primer argumento de la función que está en el lado derecho. Entonces, `x %>% f()` es lo mismo que `f(x)` y `x %>% f()%>% g()` es lo mismo que `g(f(x))`.
 
@@ -469,7 +471,7 @@ as_tibble(named_vec)
 
 Ahora que sabes cómo funciona `as_tibble()`,
 
-* Usa `map()` para mapear `as_tibble()` sobre los vectores en `ldeaths`. Luego hacé clic en _Submit Answer_. (por ahora, usa `map()` en lugar de `map_dfr()`, esto te ayudará a ver lo que sucede paso a paso mientras trabajas con los datos).
+* Usa `map()` para mapear `as_tibble()` sobre los vectores en `ldeaths`. Luego hacé clic en _Enviar respuesta_. (por ahora, usa `map()` en lugar de `map_dfr()`, esto te ayudará a ver lo que sucede paso a paso mientras trabajas con los datos).
 * Inspecciona los resultados de cerca. ¿Qué pasa?
 
 ```{r as_tibble-2, exercise = TRUE}
@@ -497,7 +499,7 @@ ldeaths %>%
 
 Si intenta ejecutar `map_dfr()` en nuestra salida actual, apilará sus columnas una encima de la otra para crear un dataframe con una columna larga. Adelante, pruébalo.
 
-* Clic en _Submit Answer_. 
+* Clic en _Enviar respuesta_. 
 
 ```{r fail, exercise = TRUE}
 ldeaths %>% 
@@ -541,7 +543,7 @@ Ahora puedes finalizar el paso 1.
 
 1. Utiliza `map()` para aplicar `t()` a cada vector en `ldeaths`.
 2. Utiliza `map_dfr()` para mapear `as_tibble()` sobre los resultados transpuestos. `map_dfr()` combinará la salida en un solo data frame.
-3. Haga clic en _Submit Answer_.
+3. Haga clic en _Enviar respuesta_.
 
 ```{r t, exercise = TRUE}
 
@@ -593,7 +595,7 @@ ldeaths %>%
 
 dplyr contiene una variante de `summary()` denominada `summary_all()`. Para usar `summary_all()`, hay que pasarle un data frame y luego una o más funciones para aplicar a cada columna en ese dataframe. `summary_all()` aplicará cada función a cada columna y devolverá los resultados como una tabla de resumen.
 
-* Usa `summarise_all()` y el código siguiente para sumar meses. Mira las sugerencias (hints) si te quedas trabado/a. Luego hacé clic en _Submit Answer_.
+* Usa `summarise_all()` y el código siguiente para sumar meses. Mira las sugerencias (hints) si te quedas trabado/a. Luego hacé clic en _Enviar respuesta_.
 
 ```{r all, exercise = TRUE}
 ldeaths %>% 
@@ -613,6 +615,11 @@ ldeaths %>%
 ```
 
 ```{r all-check}
-"¡Gran trabajo! Puedes ver un fuerte efecto estacional en los datos: en invierno ocurren más muertes relacionadas con los pulmones. Pudiste hacer esto debido al trabajo que dedicaste a trabajar los datos con purrr. ¡Date una palmadita en la espalda!"
+"¡Gran trabajo! Puedes ver un fuerte efecto estacional en los datos: en invierno ocurren más muertes relacionadas a enfermedades pulmonares. El trabajo de los datos con purrr te permitió realizar esta tarea. ¡Date una palmadita en la espalda!"
 ```
 
+### Fuente
+
+* R para ciencia de Datos. [Capítulo Iteración](https://es.r4ds.hadley.nz/iteraci%C3%B3n.html)
+
+* [RStudio primer Iterate](https://rstudio.cloud/learn/primers/5)
