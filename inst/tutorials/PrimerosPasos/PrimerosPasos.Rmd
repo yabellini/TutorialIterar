@@ -5,6 +5,7 @@ output:
     language: es
     progressive: true
     allow_skip: true
+    css: css/miceeseese.css
 runtime: shiny_prerendered
 tutorial:
   version: 1.0
@@ -23,13 +24,25 @@ tutorial_options(exercise.timelimit = 60, exercise.checker = checker)
 knitr::opts_chunk$set(error = TRUE, out.width = "100%")
 ```
 
+## Presentación
+
+Este tutorial explicará qué es un vector e introducirá dos formas de iterar en R: bucles `for` y el paquete `purrr`.
+
+### Licencia
+
+```{r echo=FALSE, fig.align="left"}
+knitr::include_graphics("images/CC_BY-SA_4.0.png")  
+```
+
+Este curso se comparte bajo la licencia [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES) y fue realizado por [Yanina Bellini Saibene](https://yabellini.netlify.app/) utilizando como fuentes el libro R para ciencia de Datos, [capítulo Iteración](https://es.r4ds.hadley.nz/iteraci%C3%B3n.html) y los [RStudio primer Iterate](https://rstudio.cloud/learn/primers/5).
+
 ## Iteración
 
 ###  
 
 Aquí tienes un número. Puedes hacer muchas cosas con él, como esta:
 
-* Calcula el logaritmo del número. Luego hace click en _Enviar respuesta_.
+* Calcula el logaritmo del número. Luego haz click en _Enviar respuesta_.
 
 ```{r number, exercise = TRUE}
 1
@@ -277,8 +290,4 @@ No necesitas saber qué hace el código anterior para ver algunos beneficios obv
 
 1. El código `purrr` es fácil de usar. Dado que `purrr` implementa el ciclo for por nosotros, no necesitamos preocuparnos que el bucle tenga efectos secundarios que no deseamos, que se ejecute más lento de lo debido o consuma cantidades innecesarias de memoria.
 
-### Fuente
 
-* R para ciencia de Datos. [Capítulo Iteración](https://es.r4ds.hadley.nz/iteraci%C3%B3n.html)
-
-* [RStudio primer Iterate](https://rstudio.cloud/learn/primers/5)

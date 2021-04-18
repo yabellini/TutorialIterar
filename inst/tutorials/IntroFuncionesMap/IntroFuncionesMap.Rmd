@@ -5,6 +5,7 @@ output:
     language: es
     progressive: true
     allow_skip: false
+    css: css/miceeseese.css    
 runtime: shiny_prerendered
 tutorial:
   version: 1.0
@@ -30,6 +31,18 @@ checker <- function(label, user_code, check_code, envir_result, evaluate_result,
 tutorial_options(exercise.timelimit = 60, exercise.checker = checker)
 knitr::opts_chunk$set(error = TRUE, out.width = "100%")
 ```
+
+## Presentación
+
+Este tutorial introduce la familia de funciones `map` de `purrr` para hacer que la iteración sea rápida y fácil. Aprenderás los secretos de map() y sus variantes.
+
+### Licencia
+
+```{r, echo=FALSE, fig.align = "left", fig.width = 50}
+  knitr::include_graphics("images/CC_BY-SA_4.0.png")  
+```
+
+Este curso se comparte bajo la licencia [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES) y fue realizado por [Yanina Bellini Saibene](https://yabellini.netlify.app/) utilizando como fuentes el libro R para ciencia de Datos, [capítulo Iteración](https://es.r4ds.hadley.nz/iteraci%C3%B3n.html) y los [RStudio primer Iterate](https://rstudio.cloud/learn/primers/5).
 
 ## Map
 
