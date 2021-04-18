@@ -16,7 +16,7 @@ vector e introducirá dos formas de iterar en R: bucles *for* y el
 paquete *purrr*.
 
 El segundo tutorial introduce la familia de funciones *map* de *purrr*
-que hace que la iteración sea rápida y fácil. Aprenderás los secretos de
+para hacer que la iteración sea rápida y fácil. Aprenderás los secretos de
 *map()* y sus variantes.
 
 ## Instalación
