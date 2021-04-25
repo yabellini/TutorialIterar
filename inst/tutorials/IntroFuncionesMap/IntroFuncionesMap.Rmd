@@ -4,7 +4,7 @@ output:
   learnr::tutorial:
     language: es
     progressive: true
-    allow_skip: false
+    allow_skip: true
     css: css/miceeseese.css    
 runtime: shiny_prerendered
 tutorial:
@@ -124,7 +124,7 @@ map(list1, log)
 ```
 
 ```{r map1-hint-4}
-"No ponga paréntesis detrás de log. log devuelve el código almacenado en la función de logaritmo. log() ejecuta el código y devuelve los resultados, que luego se pasarían a map() (en caso que log() no arrojó un error, es decir, en el caso que log() necesita un argumento para ejecutar el código correctamente)."
+"No pongas paréntesis detrás de log. _log_ devuelve el código almacenado en la función de logaritmo. _log()_ ejecuta el código y devuelve los resultados, que luego se pasarían a _map()_ ."
 ```
 
 ```{r map1-check}
@@ -179,14 +179,14 @@ Esto es conveniente por dos razones:
 
 * Predice lo que devolverá este código y luego hacé clic en _Enviar respuesta_.
 
+```{r map2-setup}
+list1 <- list(1, 2, 3, 4, 5)
+```
+
 ```{r map2, exercise = TRUE}
 list1 %>% 
   map(log) %>% 
   map(round)
-```
-
-```{r map2-setup}
-list1 <- list(1, 2, 3, 4, 5)
 ```
 
 ```{r map2-hint}
